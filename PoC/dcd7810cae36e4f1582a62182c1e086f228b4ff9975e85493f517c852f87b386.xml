@@ -1,0 +1,28 @@
+<NeoAsm xmlns:ma="Macro"
+    xmlns:op="Opcode">
+    <ma:UseLoop/>
+    <op:NEWARRAY0/>
+    <ma:Int n="0"/>
+    <op:PICK/>
+    <ma:Int n="1"/>
+    <op:PACK/>
+    <ma:Int n="1"/>
+    <op:PICK/>
+    <ma:Int n="1"/>
+    <op:PACK/>
+    <ma:Loop n="25" slot="0">
+        <ma:Int n="1"/>
+        <op:PICK/>
+        <ma:Int n="1"/>
+        <op:PICK/>
+        <ma:Int n="2"/>
+        <op:PACK/>
+        <op:REVERSE3/>
+        <ma:Int n="2"/>
+        <op:PACK/>
+    </ma:Loop>
+    <op:ROT/>
+    <op:DROP/>
+    <op:DROP/>
+    <op:DROP/>
+</NeoAsm>
