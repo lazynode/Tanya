@@ -10,7 +10,7 @@
     <op:PICK/>
     <ma:Int n="1"/>
     <op:PACK/>
-    <ma:Loop n="25" slot="0">
+    <ma:Loop n="510" slot="0">
         <ma:Int n="1"/>
         <op:PICK/>
         <ma:Int n="1"/>
