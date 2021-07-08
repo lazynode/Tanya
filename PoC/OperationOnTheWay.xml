@@ -1,0 +1,8 @@
+<NeoAsm xmlns:ma="Macro"
+    xmlns:op="Opcode">
+    <!-- TARGET COMMIT -->
+    <!-- NEOVM 9008930da17c1fc68c8990515a07cd1abc2b3d19 --> 
+    <!-- NEO f9b0b3b5dd873b062a04b52cdeea65480956a4e7 -->
+    <!-- NEONODE 12fa179cf8ba4b8e8294a84732a60fd752d54c12 --> 
+    <!-- TODO -->
+</NeoAsm>
