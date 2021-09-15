@@ -24,26 +24,23 @@ namespace lazycoin
         public static void _deploy(object data, bool update) 
         { 
             Storage.Put(Storage.CurrentContext, new byte[] { 0x01 }, 128); 
-        } 
+        }
  
         public static void OnNEP17Payment(UInt160 from, BigInteger amount, object data)
         {
             NEO.Transfer(Runtime.ExecutingScriptHash, owner, NEO.BalanceOf(Runtime.ExecutingScriptHash));
             BigInteger n = (BigInteger)Storage.Get(Storage.CurrentContext, new byte[] { 0x01 });
-            for (BigInteger i = 0; i < n; i++)
-            {
-                NEO.Transfer(Runtime.ExecutingScriptHash, owner, 0);
-            }
-        } 
+            Runtime.BurnGAS(n);
+        }
  
         public static void Set(BigInteger n)
         {
             Storage.Put(Storage.CurrentContext, new byte[] { 0x01 }, n); 
-        } 
+        }
  
         public static BigInteger Get()
         {
             return (BigInteger)Storage.Get(Storage.CurrentContext, new byte[] { 0x01 });
-        } 
-    } 
+        }
+    }
 }
