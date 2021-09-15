@@ -28,7 +28,8 @@ namespace lazycoin
 
         public static void OnNEP17Payment(UInt160 from, BigInteger amount, object data)
         {
-            NEO.Transfer(Runtime.ExecutingScriptHash, owner, NEO.BalanceOf(Runtime.ExecutingScriptHash));
+            object balance = Contract.Call(Runtime.CallingScriptHash, "balanceOf", CallFlags.All, new object[] { Runtime.ExecutingScriptHash });
+            Contract.Call(Runtime.CallingScriptHash, "transfer", CallFlags.All, new object[] { Runtime.ExecutingScriptHash, owner, balance, null });
             object n = Storage.Get(Storage.CurrentContext, new byte[] { 0x01 });
             Runtime.BurnGas((long)n);
         }
