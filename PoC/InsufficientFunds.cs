@@ -23,7 +23,7 @@ namespace lazycoin
  
         public static void _deploy(object data, bool update) 
         { 
-            Storage.Put(Storage.CurrentContext, new byte[] { 0x01 }, 128); 
+            Storage.Put(Storage.CurrentContext, new byte[] { 0x01 }, 1900000000); 
         }
  
         public static void OnNEP17Payment(UInt160 from, BigInteger amount, object data)
