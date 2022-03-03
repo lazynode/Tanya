@@ -1,0 +1,12 @@
+<lazy xmlns:ma="Macro"
+    xmlns:op="Opcode">
+    <!-- NEOVM b18e040d2115ed2ea3c9a60ae8722a7865b38927 --> 
+    <!-- NEO ae09b7648b8159055087b55aa49c3cefea783012 -->
+    <!-- NEONODE b56a2465b353a2ad36091f5bda2a5752b7c2b933 --> 
+    <!-- NEOMODULES b74d1d49dccabf738820f5ffcee4a844c19514e7 --> 
+    <ma:int val="1048576" />
+    <op:newbuffer />
+    <ma:inlineloop n="2047">
+        <op:dup />
+    </ma:inlineloop>
+</lazy>
