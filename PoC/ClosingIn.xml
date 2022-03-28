@@ -1,0 +1,73 @@
+<lazy xmlns:a="Assembly">
+    <!-- NEOVM b18e040d2115ed2ea3c9a60ae8722a7865b38927 --> 
+    <!-- NEO ae09b7648b8159055087b55aa49c3cefea783012 -->
+    <!-- NEONODE b56a2465b353a2ad36091f5bda2a5752b7c2b933 --> 
+    <a:string val="hh" />
+    <a:int val="15" />
+    <a:dowhile>
+        <swap />
+        <dup />
+        <cat />
+        <swap />
+        <dec />
+        <dup />
+    </a:dowhile>
+    <drop />
+    <a:int val="0" />
+    <a:int val="65535" />
+    <substr />
+    <convert oprand="28"/>
+    <a:int val="999" />
+    <a:dowhile>
+        <swap />
+        <dup />
+        <rot />
+        <dec />
+        <dup />
+    </a:dowhile>
+    <drop />
+    <depth />
+    <packstruct />
+
+    <a:string val="hh" />
+    <a:int val="15" />
+    <a:dowhile>
+        <swap />
+        <dup />
+        <cat />
+        <swap />
+        <dec />
+        <dup />
+    </a:dowhile>
+    <drop />
+    <a:int val="0" />
+    <a:int val="65535" />
+    <substr />
+    <convert oprand="28"/>
+    <a:int val="999" />
+    <a:dowhile>
+        <swap />
+        <dup />
+        <rot />
+        <dec />
+        <dup />
+    </a:dowhile>
+    <drop />
+    <depth />
+    <dec />
+    <packstruct />
+
+    <a:int val="500000" />
+    <a:dowhile>
+        <a:int val="2" />
+        <pick />
+        <a:int val="2" />
+        <pick />
+        <equal />
+        <drop />
+        <dec />
+        <dup />
+    </a:dowhile>
+
+    <clear />
+</lazy>
