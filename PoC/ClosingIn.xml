@@ -71,3 +71,97 @@
 
     <clear />
 </lazy>
+
+<!-- The other example -->
+
+<lazy xmlns:a="Assembly" xmlns:b="Basic">
+    <!-- NEOVM b18e040d2115ed2ea3c9a60ae8722a7865b38927 --> 
+    <!-- NEO ae09b7648b8159055087b55aa49c3cefea783012 -->
+    <!-- NEONODE b56a2465b353a2ad36091f5bda2a5752b7c2b933 --> 
+    <!-- NEOMODULES b74d1d49dccabf738820f5ffcee4a844c19514e7 -->
+    <b:func name="main">
+        <b:var name="s1" />
+        <b:var name="s2" />
+        <b:var name="tmp" />
+
+        <b:exec name="bigstruct">
+            <b:save type="var" name="s1" />
+        </b:exec>
+        <b:exec name="bigstruct">
+            <b:save type="var" name="s2" />
+        </b:exec>
+
+        <a:int val="500000" />
+        <b:save type="var" name="tmp" />
+        <b:dowhile type="var" name="tmp">
+            <b:load type="var" name="s1" />
+            <b:load type="var" name="s2" />
+            <equal />
+            <clear />
+            <b:load type="var" name="tmp" />
+            <dec />
+            <b:save type="var" name="tmp" />
+        </b:dowhile>
+
+        <clear />
+        <b:return />
+    </b:func>
+
+    <b:func name="bigstruct">
+        <b:var name="s" />
+        <b:var name="r" />
+        <b:var name="tmp" />
+
+        <!-- get the big str -->
+        <b:exec name="bigstr">
+            <b:save type="var" name="s" />
+        </b:exec>
+        <!-- put big str on the stack -->
+        <b:load type="var" name="s" />
+        <!-- for i = 1000; i != 0; i -= 1 -->
+        <a:int val="1000" />
+        <b:save type="var" name="tmp" />
+        <b:while type="var" name="tmp">
+            <dup />
+            <!-- dec the counter -->
+            <b:load type="var" name="tmp" />
+            <dec />
+            <b:save type="var" name="tmp" />
+        </b:while>
+        <depth />
+        <!-- pack all big strings to struct -->
+        <packstruct />
+        <b:save type="var" name="r" />
+        <b:return>
+            <b:load type="var" name="r" />
+        </b:return>
+    </b:func>
+
+    <b:func name="bigstr">
+        <b:var name="s" />
+        <b:var name="tmp" />
+
+        <a:string val="a" />
+        <!-- for i = 16; i != 0; i -= 1 -->
+        <a:int val="16" />
+        <b:save type="var" name="tmp" />
+        <b:while type="var" name="tmp">
+            <dup />
+            <cat />
+            <!-- dec the counter -->
+            <b:load type="var" name="tmp" />
+            <dec />
+            <b:save type="var" name="tmp" />
+        </b:while>
+        <!-- use the first 65535 byte -->
+        <a:int val="0" />
+        <a:int val="65535" />
+        <substr />
+        <!-- convert to bytestring -->
+        <convert oprand="28"/>
+        <b:save type="var" name="s" />
+        <b:return>
+            <b:load type="var" name="s" />
+        </b:return>
+    </b:func>
+</lazy>
