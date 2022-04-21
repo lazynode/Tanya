@@ -37,12 +37,10 @@ namespace Lottery
         {
             ulong H1 = seed;
             ulong H2 = seed;
-            int i = 0;
             // for (int i = 0; i < array.Length; i += 16)
             {
-                // ulong k1 = BinaryPrimitives.ReadUInt64LittleEndian(array.AsSpan(i, i+8));
-                ulong k1 = (ulong)new BigInteger(array.ToByteString().Substring(i,8).ToByteArray());
-                
+                ulong k1 = (ulong)new BigInteger(array.Take(8).Concat(new byte[]{0x00}));
+
                 k1 *= c1;
                 k1 &= 0xffffffffffffffff;
                 k1 = RotateLeft(k1, r1);
@@ -55,8 +53,7 @@ namespace Lottery
                 H1 = H1 * m + n1;
                 H1 &= 0xffffffffffffffff;
 
-                // ulong k2 = BinaryPrimitives.ReadUInt64LittleEndian(array.AsSpan(i + 8, i+16));
-                ulong k2 = (ulong)new BigInteger(array.ToByteString().Substring(i+8, 8).ToByteArray());
+                ulong k2 = (ulong)new BigInteger(array.Last(8).Concat(new byte[] {0x00}));
                 k2 *= c2;
                 k2 &= 0xffffffffffffffff;
                 k2 = RotateLeft(k2, r2);
