@@ -3,9 +3,10 @@
     <!-- NEO v3.2.1 -->
     <!-- NEONODE v3.2.1 --> 
     <!-- NEOMODULES v3.2.1 -->
-    <a:string val="attack" /> <!-- name = attack -->
     <a:bytes val="04b878c2d8d907ecf1d718990f903867c592a113" /> <!-- receiver = our address in little endian -->
+    <a:string val="attack" /> <!-- name = attack -->
     <a:int val="2" />
     <pack /> <!-- pack these two parameters -->
-    <a:contractcall hash="0x3e462750e19bc09f64d44c4b0135081d9b2b7617" method="play" /> <!-- call the lottery's play -->
+    <a:contractcall hash="0x3e462750e19bc09f64d44c4b0135081d9b2b7617" method="play" /> 
+    <!-- call the lottery's play -->
 </lazy>

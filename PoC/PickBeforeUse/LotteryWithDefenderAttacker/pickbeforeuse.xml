@@ -5,5 +5,6 @@
     <!-- NEOMODULES v3.2.1 -->
     <newarray0 />
     <a:contractcall hash="0x63e67d25d80010be9f979d74acdaec735f8def8d" method="a" /> <!-- call the lottery's play -->
-    <a:contractcall hash="0x3e462750e19bc09f64d44c4b0135081d9b2b7617" method="play" /> <!-- call the lottery's play -->
+    <a:contractcall hash="0x3e462750e19bc09f64d44c4b0135081d9b2b7617" method="play" /> 
+    <!-- call the lottery's play -->
 </lazy>
