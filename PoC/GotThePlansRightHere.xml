@@ -1,0 +1,51 @@
+<lazy xmlns:a="Assembly" xmlns:b="Basic">
+    <!-- NEOVM v3.2.0 --> 
+    <!-- NEO v3.2.1 -->
+    <!-- NEONODE v3.2.1 --> 
+    <!-- NEOMODULES v3.2.1 -->
+    <b:func name="main">
+        <b:var name="s" />
+        <b:var name="tmp" />
+
+        <b:exec name="accounts">
+            <b:save type="var" name="s" />
+        </b:exec>
+
+        <a:int val="2322824" />
+        <b:save type="var" name="tmp" />
+        <b:dowhile type="var" name="tmp">
+            <b:load type="var" name="s" />
+            <a:int val="1" />
+            <a:syscall name="System.Contract.CreateMultisigAccount" />
+            <clear />
+            <b:load type="var" name="tmp" />
+            <dec />
+            <b:save type="var" name="tmp" />
+        </b:dowhile>
+
+        <clear />
+        <b:return />
+    </b:func>
+
+    <b:func name="accounts">
+        <b:var name="s" />
+        <b:var name="tmp" />
+        <a:bytes val="02cc10d0e929ca752cfd3408bedda06463e2d93fd435e4c2b86a895b3792dee4c8" />
+        <!-- for i = 16; i != 0; i -= 1 -->
+        <a:int val="1023" />
+        <b:save type="var" name="tmp" />
+        <b:while type="var" name="tmp">
+            <dup />
+            <!-- dec the counter -->
+            <b:load type="var" name="tmp" />
+            <dec />
+            <b:save type="var" name="tmp" />
+        </b:while>
+        <depth />
+        <pack />
+        <b:save type="var" name="s" />
+        <b:return>
+            <b:load type="var" name="s" />
+        </b:return>
+    </b:func>
+</lazy>
