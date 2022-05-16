@@ -1,0 +1,34 @@
+
+<!-- 
+0:00:26
+
+VwEAAfgHdwAMKGFhYWJiYmJiYmJiYmNjY2NjY2NkZGRkZGRkZWVlZWVlZWZmZmZmZmZvAJ13AG8AJc////8CwPNeAXcAAfcHUm8AnXcAbwAl9f///0lA
+-->
+<lazy xmlns:a="Assembly" xmlns:b="Basic">
+    <b:func name="main">
+        <b:var name="tmp" />
+
+        <a:int val="2040" />
+        <b:save type="var" name="tmp" />
+        <b:dowhile type="var" name="tmp">
+            <a:string val="aaabbbbbbbbbcccccccdddddddeeeeeeefffffff" />
+
+            <b:load type="var" name="tmp" />
+            <dec />
+            <b:save type="var" name="tmp" />
+        </b:dowhile>
+
+        <a:int val="23000000" />
+        <b:save type="var" name="tmp" />
+        <b:dowhile type="var" name="tmp">
+            <a:int val="2039" />
+            <roll />
+
+            <b:load type="var" name="tmp" />
+            <dec />
+            <b:save type="var" name="tmp" />
+        </b:dowhile>
+        <clear />
+        <b:return />
+    </b:func>
+</lazy>

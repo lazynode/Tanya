@@ -1,0 +1,25 @@
+
+<!-- 
+0:01:29
+
+VwEAAlkNeU93AAH4B8NFbwCddwBvACX0////QA==
+-->
+<lazy xmlns:a="Assembly" xmlns:b="Basic">
+    <b:func name="main">
+        <b:var name="tmp" />
+
+        <a:int val="1333333337" />
+        <b:save type="var" name="tmp" />
+        <b:dowhile type="var" name="tmp">
+            <a:int val="2040" />
+            <newarray />
+            <drop />
+        
+            <b:load type="var" name="tmp" />
+            <dec />
+            <b:save type="var" name="tmp" />
+        </b:dowhile>
+
+        <b:return />
+    </b:func>
+</lazy>

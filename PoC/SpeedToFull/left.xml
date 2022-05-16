@@ -1,0 +1,28 @@
+<!-- 
+0:03:00
+
+VwEAAgAAEACIAlmB8gd3AEoCAAAQAI1FbwCddwBvACXx////SUA=
+-->
+<lazy xmlns:a="Assembly" xmlns:b="Basic">
+    <b:func name="main">
+        <b:var name="tmp" />
+
+        <a:int val="1048576" />
+        <newbuffer />
+
+        <a:int val="133333337" />
+        <b:save type="var" name="tmp" />
+        <b:dowhile type="var" name="tmp">
+            <dup />
+            <a:int val="1048576" />
+            <left />
+            <drop />
+
+            <b:load type="var" name="tmp" />
+            <dec />
+            <b:save type="var" name="tmp" />
+        </b:dowhile>
+        <clear />
+        <b:return />
+    </b:func>
+</lazy>

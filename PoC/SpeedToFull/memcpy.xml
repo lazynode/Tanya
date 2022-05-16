@@ -1,0 +1,35 @@
+
+<!-- 
+0:00:10
+
+VwEAAgAAEACIAgAAEACIAlmB8gd3AEsQEk0QAgAAEACJbwCddwBvACXu////SUA=
+-->
+<lazy xmlns:a="Assembly" xmlns:b="Basic">
+    <b:func name="main">
+        <b:var name="tmp" />
+
+        <a:int val="1048576" />
+        <newbuffer />
+        <a:int val="1048576" />
+        <newbuffer />
+
+        <a:int val="133333337" />
+        <b:save type="var" name="tmp" />
+        <b:dowhile type="var" name="tmp">
+            <over />
+            <a:int val="0" />
+            <a:int val="2" />
+            <pick />
+            <a:int val="0" />
+            <a:int val="1048576" />
+            <memcpy />
+            
+
+            <b:load type="var" name="tmp" />
+            <dec />
+            <b:save type="var" name="tmp" />
+        </b:dowhile>
+        <clear />
+        <b:return />
+    </b:func>
+</lazy>
