@@ -7,8 +7,8 @@ type | location | reason | poc | issue | fix
 ---- | ---- | ------ | --- | ----- | ---
 OOM | vm GC | faulty implementation of BFS | [poc](https://github.com/lazynode/Tanya/pull/1/files) | [issue](https://github.com/neo-project/neo-vm/issues/418) | [fix](https://github.com/neo-project/neo-vm/pull/416/files)
 OOM | native contract stdlib's jsonSerialize | faulty implementation of checking size | [poc](https://github.com/lazynode/Tanya/pull/2/files) | [issue](https://github.com/neo-project/neo/issues/2527) | [fix](https://github.com/neo-project/neo/pull/2529/files)
-DoS | vm GC | GC combined other slow operation O(n<sup>2</sup>) | [poc](https://github.com/lazynode/Tanya/pull/5) | [issue](https://github.com/neo-project/neo/issues/2532) | TOO HARD
-Dos | vm GC | PickItem opcode in an end-to-end array's GC is O(n<sup>2</sup>) | [poc](https://github.com/lazynode/Tanya/pull/4/files) | [issue](https://github.com/neo-project/neo/issues/2528) | TOO HARD
+DoS | vm GC | GC combined other slow operation O(n<sup>2</sup>) | [poc](https://github.com/lazynode/Tanya/pull/5) | [issue](https://github.com/neo-project/neo/issues/2532) | [fix](https://github.com/neo-project/neo-vm/pull/464/files)
+Dos | vm GC | PickItem opcode in an end-to-end array's GC is O(n<sup>2</sup>) | [poc](https://github.com/lazynode/Tanya/pull/4/files) | [issue](https://github.com/neo-project/neo/issues/2528) | [fix](https://github.com/neo-project/neo-vm/pull/464/files)
 OOM | native contract stdlib's deserialize | forget to limit object size | [poc](https://github.com/lazynode/Tanya/pull/6) | [issue](https://github.com/neo-project/neo/issues/2530) | [fix](https://github.com/neo-project/neo/pull/2531/files)
 OOM | native contract stdlib's jsonDeserialize | forget to limit object size | [poc](https://github.com/lazynode/Tanya/pull/7/files) | [issue](https://github.com/neo-project/neo/issues/2533) | [fix](https://github.com/neo-project/neo/pull/2553)
 OOM | vm clone opcode upon nested struct | huge object copy without limits | [poc](https://github.com/lazynode/Tanya/pull/8/files) | [issue](https://github.com/neo-project/neo-vm/issues/426) | [fix](https://github.com/neo-project/neo-vm/pull/423/files)
@@ -28,3 +28,5 @@ DoS | syscall CreateMultisigAccount | under-priced | [poc](https://github.com/ne
 DoS | syscall CheckWitness | under-priced cache-miss | [poc](https://github.com/lazynode/Tanya/pull/27/files) | [issue](https://github.com/neo-project/neo/issues/2720) | TODO
 DoS | opcodes in O(n) | under-priced | [poc](https://github.com/lazynode/Tanya/pull/28) | [issue](https://github.com/neo-project/neo/issues/2723) | TODO
 DoS | syscall is O(n) | under-priced | [poc](https://github.com/lazynode/Tanya/pull/30) | [issue](https://github.com/neo-project/neo/issues/2725) | TODO
+DoS | opcodes in O(n) | under-priced | [poc](https://github.com/lazynode/Tanya/pull/28) | [issue](https://github.com/neo-project/neo/issues/2723) | TODO | main
+**Money Print & Govenance Control** | native contract NeoToken | Reentrance | [poc](https://github.com/lazynode/Tanya/pull/31/files) | private submit | [fix](https://github.com/neo-project/neo/pull/2734)
