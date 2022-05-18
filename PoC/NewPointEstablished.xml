@@ -1,0 +1,44 @@
+
+<lazy xmlns:a="Assembly" xmlns:b="Basic">
+    <!-- TARGET TAG -->
+    <!-- NEO v3.2.0 -->
+    <!-- NEONODE v3.2.0 --> 
+    <b:func name="main">
+        <b:var name="tmp" />
+
+        <newarray0 />
+        <a:string val="aaaaa" />
+
+        <a:int val="500" />
+        <b:save type="var" name="tmp" />
+        <b:dowhile type="var" name="tmp">
+            <over />
+            <over />
+            <a:syscall name="System.Runtime.Notify" />
+
+            <b:load type="var" name="tmp" />
+            <dec />
+            <b:save type="var" name="tmp" />
+        </b:dowhile>
+
+        <clear />
+
+        <a:syscall name="System.Runtime.GetExecutingScriptHash" />
+
+        <a:int val="2000000000" />
+        <b:save type="var" name="tmp" />
+        <b:dowhile type="var" name="tmp">
+            <dup />
+            <a:syscall name="System.Runtime.GetNotifications" />
+            <drop />
+
+            <b:load type="var" name="tmp" />
+            <dec />
+            <b:save type="var" name="tmp" />
+        </b:dowhile>
+
+        <clear />
+
+        <b:return />
+    </b:func>
+</lazy>
