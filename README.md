@@ -25,8 +25,7 @@ DoS | neovm large struct equal opcode | forget to limit size | [poc](https://git
 Manipulating Random | syscall random | random sequence is predictable | [poc](https://github.com/lazynode/Tanya/pull/22) | [issue](https://github.com/lazynode/Tanya/issues/24) | -
 Manipulating Random | syscall random | side channel attack by GAS manipulating | [poc](https://github.com/neo-project/neo/issues/2693#issuecomment-1096021296) | [issue](https://github.com/neo-project/neo/issues/2693) | -
 DoS | syscall CreateMultisigAccount | under-priced | [poc](https://github.com/neo-project/neo/issues/2710) | [issue](https://github.com/neo-project/neo/issues/2710) | [fix](https://github.com/neo-project/neo/pull/2712/files)
-DoS | syscall CheckWitness | under-priced cache-miss | [poc](https://github.com/lazynode/Tanya/pull/27/files) | [issue](https://github.com/neo-project/neo/issues/2720) | TODO
-DoS | opcodes in O(n) | under-priced | [poc](https://github.com/lazynode/Tanya/pull/28) | [issue](https://github.com/neo-project/neo/issues/2723) | TODO
-DoS | syscall is O(n) | under-priced | [poc](https://github.com/lazynode/Tanya/pull/30) | [issue](https://github.com/neo-project/neo/issues/2725) | TODO
-DoS | opcodes in O(n) | under-priced | [poc](https://github.com/lazynode/Tanya/pull/28) | [issue](https://github.com/neo-project/neo/issues/2723) | TODO | main
+DoS | syscall CheckWitness | under-priced cache-miss | [poc](https://github.com/lazynode/Tanya/pull/27/files) | [issue](https://github.com/neo-project/neo/issues/2720) | [fix](https://github.com/neo-project/neo/pull/2744)
+DoS | syscall is O(n) | under-priced | [poc](https://github.com/lazynode/Tanya/pull/30) | [issue](https://github.com/neo-project/neo/issues/2725) | [fix](https://github.com/neo-project/neo/pull/2748)
+DoS | opcodes in O(n) | under-priced | [poc](https://github.com/lazynode/Tanya/pull/28) | [issue](https://github.com/neo-project/neo/issues/2723) | [fix](https://github.com/neo-project/neo-vm/pull/471)
 **Money Print & Govenance Control** | native contract NeoToken | Reentrance | [poc](https://github.com/lazynode/Tanya/pull/31/files) | private submit | [fix](https://github.com/neo-project/neo/pull/2734)
