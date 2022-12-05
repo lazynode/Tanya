@@ -1,49 +1,47 @@
-using System; 
-using System.ComponentModel; 
-using Neo.SmartContract.Framework; 
+using System;
+using System.ComponentModel;
+using Neo.SmartContract.Framework;
 using Neo.SmartContract.Framework.Native;
 using Neo;
-using System.Numerics; 
+using System.Numerics;
 using Neo.Cryptography.ECC;
 using Neo.SmartContract.Framework.Services;
 using Neo.SmartContract;
 
 
-namespace lazycoin 
+namespace lazycoin
 {
-    [DisplayName("GASEater")] 
-    [ManifestExtra("Author", "lazynode")] 
-    [ManifestExtra("Email", "lazynode@protonmail.com")] 
+    [DisplayName("GASEater")]
+    [ManifestExtra("Author", "lazynode")]
+    [ManifestExtra("Email", "lazynode@protonmail.com")]
     [ManifestExtra("Description", "GASEater eats GAS")]
-    [ContractPermission("*", "onNEP17Payment")] 
-    public partial class GASEater : SmartContract 
-    { 
+    [ContractPermission("*", "onNEP17Payment")]
+    public partial class GASEater : SmartContract
+    {
         [InitialValue("NhMvRrhBnZyAwZnw8y9mHoCzwSEDmZJo2n", ContractParameterType.Hash160)]
         private static readonly UInt160 owner = default;
- 
-        public static void _deploy(object data, bool update) 
-        { 
-            Storage.Put(Storage.CurrentContext, new byte[] { 0x01 }, 128); 
-        } 
- 
+
+        public static void _deploy(object data, bool update)
+        {
+            Storage.Put(Storage.CurrentContext, new byte[] { 0x01 }, 1900000000);
+        }
+
         public static void OnNEP17Payment(UInt160 from, BigInteger amount, object data)
         {
-            NEO.Transfer(Runtime.ExecutingScriptHash, owner, NEO.BalanceOf(Runtime.ExecutingScriptHash));
-            BigInteger n = (BigInteger)Storage.Get(Storage.CurrentContext, new byte[] { 0x01 });
-            for (BigInteger i = 0; i < n; i++)
-            {
-                NEO.Transfer(Runtime.ExecutingScriptHash, owner, 0);
-            }
-        } 
- 
+            object balance = Contract.Call(Runtime.CallingScriptHash, "balanceOf", CallFlags.All, new object[] { Runtime.ExecutingScriptHash });
+            Contract.Call(Runtime.CallingScriptHash, "transfer", CallFlags.All, new object[] { Runtime.ExecutingScriptHash, owner, balance, null });
+            object n = Storage.Get(Storage.CurrentContext, new byte[] { 0x01 });
+            Runtime.BurnGas((long)n);
+        }
+
         public static void Set(BigInteger n)
         {
-            Storage.Put(Storage.CurrentContext, new byte[] { 0x01 }, n); 
-        } 
- 
+            Storage.Put(Storage.CurrentContext, new byte[] { 0x01 }, n);
+        }
+
         public static BigInteger Get()
         {
             return (BigInteger)Storage.Get(Storage.CurrentContext, new byte[] { 0x01 });
-        } 
-    } 
+        }
+    }
 }
